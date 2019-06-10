@@ -1,6 +1,10 @@
 class Student
 
+<<<<<<< HEAD
     attr_accessor :name, :grade
+=======
+    attr_accessor :name, :grade, :id
+>>>>>>> 817d83b882bc877949cc75a798cc0461ddd56acd
     attr_reader :id
 
     def initialize(name, grade, id=nil)
@@ -11,13 +15,18 @@ class Student
 
     def self.create_table
         sql =  <<-SQL
+<<<<<<< HEAD
           CREATE TABLE IF NOT EXISTS students (
+=======
+          CREATE TABLE IF NOT EXISTS student (
+>>>>>>> 817d83b882bc877949cc75a798cc0461ddd56acd
             id INTEGER PRIMARY KEY,
             name TEXT,
             grade TEXT
             )
             SQL
         DB[:conn].execute(sql)
+<<<<<<< HEAD
     end
     def self.drop_table
          sql = <<-SQL
@@ -43,4 +52,17 @@ class Student
     student
     end
 
+=======
+      end
+
+      def save
+        sql = <<-SQL
+        INSERT INTO student (name, grade)
+        VALUES (?, ?)
+        SQL
+
+        DB[:conn].execute(sql, self.name, self.grade)
+
+      end
+>>>>>>> 817d83b882bc877949cc75a798cc0461ddd56acd
 end
